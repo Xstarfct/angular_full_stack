@@ -516,11 +516,11 @@ gulp.task('constant', function () {
 
 gulp.task('build:images', () => {
     return gulp.src(paths.client.images)
-        .pipe(plugins.imagemin({
-            optimizationLevel: 5,
-            progressive: true,
-            interlaced: true
-        }))
+        // .pipe(plugins.imagemin({
+        //     optimizationLevel: 1,
+        //     progressive: true,
+        //     interlaced: true
+        // }))
         .pipe(plugins.rev())
         .pipe(gulp.dest(`${paths.dist}/${clientPath}/assets/images`))
         .pipe(plugins.rev.manifest(`${paths.dist}/${clientPath}/assets/rev-manifest.json`, {
@@ -610,47 +610,47 @@ gulp.task('test:e2e', ['env:all', 'env:test', 'start:server', 'webdriver_update'
  * Grunt ported tasks
  ********************/
 
-grunt.initConfig({
-    buildcontrol: {
-        options: {
-            dir: paths.dist,
-            commit: true,
-            push: true,
-            connectCommits: false,
-            message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
-        },
-        heroku: {
-            options: {
-                remote: 'heroku',
-                branch: 'master'
-            }
-        },
-        openshift: {
-            options: {
-                remote: 'openshift',
-                branch: 'master'
-            }
-        }
-    }
-});
-
-grunt.loadNpmTasks('grunt-build-control');
-
-gulp.task('buildcontrol:heroku', function (done) {
-    grunt.tasks(
-        ['buildcontrol:heroku'],    //you can add more grunt tasks in this array
-        {gruntfile: false}, //don't look for a Gruntfile - there is none. :-)
-        function () {
-            done();
-        }
-    );
-});
-gulp.task('buildcontrol:openshift', function (done) {
-    grunt.tasks(
-        ['buildcontrol:openshift'],    //you can add more grunt tasks in this array
-        {gruntfile: false}, //don't look for a Gruntfile - there is none. :-)
-        function () {
-            done();
-        }
-    );
-});
+// grunt.initConfig({
+//     buildcontrol: {
+//         options: {
+//             dir: paths.dist,
+//             commit: true,
+//             push: true,
+//             connectCommits: false,
+//             message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+//         },
+//         heroku: {
+//             options: {
+//                 remote: 'heroku',
+//                 branch: 'master'
+//             }
+//         },
+//         openshift: {
+//             options: {
+//                 remote: 'openshift',
+//                 branch: 'master'
+//             }
+//         }
+//     }
+// });
+//
+// grunt.loadNpmTasks('grunt-build-control');
+//
+// gulp.task('buildcontrol:heroku', function (done) {
+//     grunt.tasks(
+//         ['buildcontrol:heroku'],    //you can add more grunt tasks in this array
+//         {gruntfile: false}, //don't look for a Gruntfile - there is none. :-)
+//         function () {
+//             done();
+//         }
+//     );
+// });
+// gulp.task('buildcontrol:openshift', function (done) {
+//     grunt.tasks(
+//         ['buildcontrol:openshift'],    //you can add more grunt tasks in this array
+//         {gruntfile: false}, //don't look for a Gruntfile - there is none. :-)
+//         function () {
+//             done();
+//         }
+//     );
+// });
