@@ -10,4 +10,4 @@ before_script:
   - bower install
 services: mongodb
 script:
-  -gulp serve
+  - gulp serve
